@@ -1,0 +1,107 @@
+export interface Category {
+  id: string;
+  name: string;
+  slug: string;
+  description: string;
+  icon: string;
+  articleCount: number;
+}
+
+export const categories: Category[] = [
+  {
+    id: "1",
+    name: "Маънавият",
+    slug: "ma-naviyat",
+    description: "Маънавий қадриятлар, одоб-ахлоқ ва маънавий тарбия масалалари.",
+    icon: "📿",
+    articleCount: 15
+  },
+  {
+    id: "2",
+    name: "Илм",
+    slug: "ilm",
+    description: "Илмий тадқиқотлар, инновациялар ва техникавий тараққиёт.",
+    icon: "🔬",
+    articleCount: 12
+  },
+  {
+    id: "3",
+    name: "Иқтисодиёт",
+    slug: "iqtisodiyot",
+    description: "Иқтисодий ривожланиш, бизнес ва инвестиция масалалари.",
+    icon: "💼",
+    articleCount: 8
+  },
+  {
+    id: "4",
+    name: "Таълим",
+    slug: "talim",
+    description: "Таълим тизими, педагогика ва ўқитиш усуллари.",
+    icon: "📚",
+    articleCount: 10
+  },
+  {
+    id: "5",
+    name: "Адабиёт",
+    slug: "adabiyot",
+    description: "Адабий ёзувчилар, шеърият, наср ва адабий танқид.",
+    icon: "📖",
+    articleCount: 14
+  },
+  {
+    id: "6",
+    name: "Тарих",
+    slug: "tarix",
+    description: "Тарихий ҳодисалар, маданий мерос ва хотиралар.",
+    icon: "🏛️",
+    articleCount: 11
+  },
+  {
+    id: "7",
+    name: "Маданият",
+    slug: "madaniyat",
+    description: "Маданият, санъат ва маданий тадбирлар.",
+    icon: "🎭",
+    articleCount: 9
+  },
+  {
+    id: "8",
+    name: "Ёшлар",
+    slug: "yoshlar",
+    description: "Ёшлар масалалари, тарбия ва келажак стратегиялари.",
+    icon: "🌟",
+    articleCount: 7
+  },
+  {
+    id: "9",
+    name: "Жамият",
+    slug: "jamiyat",
+    description: "Жамиятдаги ижтимоий-сиёсий жараёнлар ва замонавий муаммолар.",
+    icon: "👥",
+    articleCount: 5
+  },
+  {
+    id: "10",
+    name: "Тилшунослик",
+    slug: "tilshunoslik",
+    description: "Ўзбек тили, адабиёт ва лингвистика бўйича тадқиқотлар.",
+    icon: "🗣️",
+    articleCount: 3
+  },
+  {
+    id: "11",
+    name: "Фото",
+    slug: "foto",
+    description: "Фотогалерея – журнал лавҳалари.",
+    icon: "📷",
+    articleCount: 0
+  },
+  {
+    id: "12",
+    name: "Видео",
+    slug: "video",
+    description: "Видеоматериаллар ва интервьюлар.",
+    icon: "🎬",
+    articleCount: 0
+  }
+];

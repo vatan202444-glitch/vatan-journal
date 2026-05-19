@@ -1,0 +1,12 @@
+{
+  "cover": {
+    "type": "image",
+    "imageUrl": "/uploads/homepage-cover.jpg",
+    "year": "2024",
+    "issueNumber": "01",
+    "subtitle": "Нишона сон",
+    "badge": "",
+    "badgeColor": "#b45309"
+  },
+  "featuredArticleId": "article-001"
+}

@@ -1,0 +1,278 @@
+@import "tailwindcss";
+
+:root {
+  /* Light Mode Academic Journal Palette */
+  --background: #fcfbf7;
+  --foreground: #1e293b;
+  --primary: #1e3a8a;
+  --primary-light: #3b82f6;
+  --secondary: #b45309;
+  --secondary-light: #d97706;
+  --accent-gold: #b45309;
+  --text-muted: #64748b;
+  --border-light: #e5e7eb;
+  --card-bg: #ffffff;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  
+  /* Typography - using CSS variables from next/font */
+  --font-serif: var(--font-playfair, 'Playfair Display'), Georgia, 'Times New Roman', serif;
+  --font-sans: var(--font-inter, 'Inter'), system-ui, -apple-system, sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
+  --color-accent-gold: var(--accent-gold);
+  --color-text-muted: var(--text-muted);
+  --color-border-light: var(--border-light);
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
+
+/* Light mode is default - no dark mode for this academic journal design */
+.dark {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --primary: #93c5fd;
+  --primary-light: #60a5fa;
+  --secondary: #fbbf24;
+  --secondary-light: #fcd34d;
+  --accent-gold: #fbbf24;
+  --text-muted: #94a3b8;
+  --border-light: #334155;
+  --card-bg: #1e293b;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  font-weight: 450;
+  font-size: 17px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ===== Dark Mode Universal Overrides ===== */
+
+/* Backgrounds */
+.dark .bg-white,
+.dark .bg-\[\#fcfbf7\],
+.dark .bg-\[\#f8fafc\],
+.dark .bg-\[\#f8f6f0\],
+.dark .bg-\[\#f1f5f9\] {
+  background-color: #1e293b !important;
+}
+
+.dark .bg-gradient-to-br {
+  background-image: none !important;
+  background-color: #0f172a !important;
+}
+
+.dark section.bg-white,
+.dark section.bg-\[\#f8fafc\] {
+  background-color: #0f172a !important;
+}
+
+.dark .min-h-screen.bg-\[\#fcfbf7\] {
+  background-color: #0f172a !important;
+}
+
+/* Text colors */
+.dark .text-\[\#1e293b\],
+.dark .text-\[\#0f172a\] {
+  color: #f1f5f9 !important;
+}
+
+.dark .text-\[\#475569\] {
+  color: #cbd5e1 !important;
+}
+
+.dark .text-\[\#64748b\] {
+  color: #94a3b8 !important;
+}
+
+.dark .text-\[\#94a3b8\] {
+  color: #64748b !important;
+}
+
+/* Headings in dark mode */
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: #93c5fd !important;
+}
+
+.dark .text-\[\#1e3a8a\] {
+  color: #93c5fd !important;
+}
+
+/* Borders */
+.dark .border-\[\#e5e7eb\],
+.dark .border-gray-200 {
+  border-color: #334155 !important;
+}
+
+.dark .border-t.border-\[\#e5e7eb\] {
+  border-color: #334155 !important;
+}
+
+/* Cards & article items */
+.dark article .bg-white,
+.dark .journal-card {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+/* Header in dark mode */
+.dark header.bg-white {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+}
+
+.dark .bg-\[\#f8fafc\].border-b {
+  background-color: #1e293b !important;
+}
+
+/* Input fields in dark mode */
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: #1e293b !important;
+  color: #f1f5f9 !important;
+  border-color: #475569 !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* Inline style overrides — these use attribute selectors to catch React style props */
+.dark [style*="color: #1e293b"],
+.dark [style*="color: rgb(30, 41, 59)"] { color: #f1f5f9 !important; }
+.dark [style*="color: #475569"],
+.dark [style*="color: rgb(71, 85, 105)"] { color: #cbd5e1 !important; }
+.dark [style*="color: #888"] { color: #94a3b8 !important; }
+
+.dark [style*="background: #fff"],
+.dark [style*="background: #f8f6f0"],
+.dark [style*="background: #f8fafc"],
+.dark [style*="background: rgb(248, 246, 240)"],
+.dark [style*="background: rgb(248, 250, 252)"] {
+  background-color: #0f172a !important;
+}
+
+.dark [style*="border: 1px solid #e2ddd4"],
+.dark [style*="border-top: 1px solid #e2ddd4"] {
+  border-color: #334155 !important;
+}
+
+/* Article reading body */
+.dark .article-reading-body,
+.dark .article-reading-body p,
+.dark .article-reading-body li,
+.dark .article-reading-body span,
+.dark .article-reading-body div {
+  color: #e2e8f0 !important;
+}
+
+.dark .article-reading-body h1,
+.dark .article-reading-body h2,
+.dark .article-reading-body h3,
+.dark .article-reading-body h4 {
+  color: #93c5fd !important;
+}
+
+/* Hero section gradient fix */
+.dark section.relative.min-h-screen {
+  background: #0f172a !important;
+}
+.dark section.relative.min-h-screen .absolute {
+  opacity: 0.3 !important;
+}
+
+/* Footer */
+.dark footer {
+  background-color: #0f172a !important;
+}
+
+/* Dark mode selection */
+.dark ::selection {
+  background-color: rgba(147, 197, 253, 0.3);
+  color: #f1f5f9;
+}
+
+/* Academic Typography Styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--primary);
+}
+
+h1 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+p, li {
+  font-weight: 450;
+}
+
+/* Academic Journal Article Styling */
+.article-content {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.9;
+  font-weight: 450;
+}
+
+.article-content h1,
+.article-content h2,
+.article-content h3 {
+  font-family: var(--font-serif);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Gold Accent Elements */
+.accent-gold {
+  color: var(--accent-gold);
+}
+
+.border-gold {
+  border-color: var(--accent-gold);
+}
+
+/* Journal Card Styling */
+.journal-card {
+  background: white;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04);
+}
+
+/* Heritage/Historical Elements */
+.heritage-header {
+  background: linear-gradient(135deg, var(--primary) 0%, #1e3a5f 100%);
+}
+
+/* Selection Color */
+::selection {
+  background-color: rgba(30, 58, 138, 0.2);
+  color: var(--primary);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better text rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

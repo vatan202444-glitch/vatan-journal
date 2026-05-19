@@ -1,0 +1,205 @@
+import { authors } from './authors';
+
+export interface Article {
+  id: string;
+  slug: string;
+  title: string;
+  summary: string;
+  content: string;
+  contentHtml?: string;
+  authorId: string;
+  authorName: string;
+  categoryId: string;
+  categoryName: string;
+  categorySlug: string;
+  issueId: string;
+  issueNumber: string;
+  date: string;
+  readTime: number;
+  featured: boolean;
+  status: 'published' | 'draft';
+  isPremium?: boolean;
+  imageUrl?: string;
+  views?: number;
+  shortLink?: string;
+  metaDescription?: string;
+  publishAt?: string;
+}
+
+export const articles: Article[] = [
+  {
+    id: 'article-001',
+    slug: 'ozbekistonning-ochilmagan-konlari',
+    title: 'Ўзбекистоннинг очилмаган конлари',
+    summary:
+      'Республикамизнинг табиий бойликлари ва улардан самарали фойдаланиш йўллари ҳақида батафсил тадқиқот.',
+    content: '',
+    contentHtml: `<p class="lead">Республикамизнинг табиий бойликлари ва улардан самарали фойдаланиш йўллари ҳақида батафсил тадқиқот.</p>
+<h2>Табиий бойликларимиз саралавҳаси</h2>
+<p>Ўзбекистон табиий ресурслар бойлиги билан дунёда 10 та энг бой давлатлар қаторига киради.</p>
+<ul><li>Олтин конлари – Навоий, Қизилқум</li><li>Уран конлари – Навоий, Самарқанд вилояти</li><li>Кўмир конлари – Ангрен, Шаргун</li></ul>
+<h2>Хулоса</h2>
+<p>Ўзбекистоннинг табиий ресурслари халқимизнинг келажакдаги фаровонлиги учун мустаҳкам асос бўлиши мумкин.</p>`,
+    authorId: 'author-001',
+    authorName: 'Дилшод Раҳимов',
+    categoryId: 'iqtisodiyot',
+    categoryName: 'Иқтисодиёт',
+    categorySlug: 'iqtisodiyot',
+    issueId: 'issue-2025-02',
+    issueNumber: '02/2025',
+    date: '2025-02-10',
+    readTime: 8,
+    featured: true,
+    status: 'published',
+  },
+  {
+    id: 'article-002',
+    slug: 'ozbekchilik-milliy-iftihormi-yoki-taraqqiyotga-tosiq',
+    title: 'Ўзбекчилик: Миллий ифтихорми ёки тараққиётга тўсиқ?',
+    summary:
+      'Мақолада миллий қадриятлар ва замонавий тараққиёт ўртасидаги мураккаб муносабатлар ҳал этилмоқда.',
+    content: '',
+    contentHtml: `<p class="lead">Мақолада миллий қадриятлар ва замонавий тараққиёт ўртасидаги мураккаб муносабатлар, шунингдек, глобаллашув шароитида миллий идентитетни сақлаб қолишнинг муаммолари ҳал этилмоқда.</p>
+<h2>Кириш</h2>
+<p>Ўтган асрнинг 90-йилларида Ўзбекистон мустақилликка эришгани билан миллатнинг ўзига хослигини қайта тиклаш жараёни бошланди.</p>
+<blockquote><p>"Миллият – бу фақат этник тегишлилик эмас, балки тарихий хотира, маданий мерос ва келажакка бўлган умитнинг бирлиги."</p></blockquote>
+<h2>Хулоса</h2>
+<p>Ўзбекчилик – бу тараққиётга тўсиқ эмас, балки тараққиётнинг асоси бўлиши мумкин.</p>`,
+    authorId: 'author-002',
+    authorName: 'Нодира Каримова',
+    categoryId: 'jamiyat',
+    categoryName: 'Жамият',
+    categorySlug: 'jamiyat',
+    issueId: 'issue-2025-02',
+    issueNumber: '02/2025',
+    date: '2025-02-15',
+    readTime: 12,
+    featured: true,
+    status: 'published',
+  },
+  {
+    id: 'article-003',
+    slug: 'rus-tilining-tasiri',
+    title: 'Рус тилининг таъсири: ўзбек тилининг маданий захирасими ёки колониал хотира?',
+    summary: 'Тилшунослик нуқтаи назаридан рус тилининг ўзбек тилига таъсири тадқиқ этилади.',
+    content: '',
+    contentHtml: `<p class="lead">Тилшунослик нуқтаи назаридан рус тилининг ўзбек тилига таъсири тадқиқ этилади.</p>
+<h2>Тарихий контекст</h2>
+<p>Рус тили Ўзбекистонда 150 йилдан ортиқ вақт давомида ҳукмрон тил бўлиб келди.</p>
+<h2>Хулоса</h2>
+<p>Асосий масала – замонавий ўзбек тилини яратиш, унда миллий маданиятнинг бойлиги ҳам акс этса.</p>`,
+    authorId: 'author-003',
+    authorName: 'Анвар Исмоилов',
+    categoryId: 'tilshunoslik',
+    categoryName: 'Тилшунослик',
+    categorySlug: 'tilshunoslik',
+    issueId: 'issue-2025-02',
+    issueNumber: '02/2025',
+    date: '2025-02-12',
+    readTime: 15,
+    featured: false,
+    status: 'published',
+  },
+  {
+    id: 'article-004',
+    slug: 'sovet-teleologiyalaridan-xoli-fikrlash',
+    title: 'Совет телеологияларидан холи фикрлаш: Марказий Осиё тарихини ўрганиш истиқболлари',
+    summary: 'Янги архив маълумотлари асосида Марказий Осиё тарихини қайта кўриб чиқиш.',
+    content: '',
+    contentHtml: `<p class="lead">Янги архив маълумотлари асосида Марказий Осиё тарихини қайта кўриб чиқиш муаммолари ва истиқболлари.</p>
+<h2>Совет тарихшунослиги мероси</h2>
+<p>Марказий Осиё тарихини ўрганишда Совет даврида шаклланган телеологиялар ҳали ҳам таъсир кўрсатмоқда.</p>
+<h2>Хулоса</h2>
+<p>Тарихни ўрганиш – бу фақат ўтганни ўрганиш эмас, балки келажакни тушуниш учун зарур жараён.</p>`,
+    authorId: 'author-004',
+    authorName: 'Баҳодир Хон',
+    categoryId: 'tarix',
+    categoryName: 'Тарих',
+    categorySlug: 'tarix',
+    issueId: 'issue-2025-02',
+    issueNumber: '02/2025',
+    date: '2025-02-08',
+    readTime: 20,
+    featured: true,
+    status: 'published',
+  },
+  {
+    id: 'article-005',
+    slug: 'arab-xalifasi-nega-turklarning-doppisini-kiygan',
+    title: 'Араб халифаси нега туркларнинг дўпписини кийган?',
+    summary: 'Ўрта асрлар маданияти ва сиёсатидаги қизиқарли тарихий воқеалар.',
+    content: '',
+    contentHtml: `<p class="lead">Ўрта асрлар маданияти ва сиёсатидаги қизиқарли тарихий воқеалар – Аббосийлар халифасининг туркик яшамиш услубини қабул қилиши.</p>
+<h2>Тарихий контекст</h2>
+<p>9-асрнинг бошларида Аббосийлар халифати янги гуруҳ – туркик ғуломлар ва аскарларнинг таъсири остида бўлди.</p>
+<h2>Хулоса</h2>
+<p>Араб халифасининг дўппа кийиши – бу фақат модавий танлаш эмас, балки давлат сиёсатининг муҳим қисми эди.</p>`,
+    authorId: 'author-005',
+    authorName: 'Саид Аҳмадов',
+    categoryId: 'tarix',
+    categoryName: 'Тарих',
+    categorySlug: 'tarix',
+    issueId: 'issue-2025-02',
+    issueNumber: '02/2025',
+    date: '2025-02-14',
+    readTime: 10,
+    featured: false,
+    status: 'published',
+  },
+  {
+    id: '1',
+    slug: 'ozbekistonning-ma-naviy-qadriyatlari',
+    title: 'Ўзбекистоннинг маънавий қадриятлари',
+    summary: 'Ўзбек халқининг қадимий маънавий қадриятлари ва уларнинг замонавий замондаги аҳамияти ҳақида.',
+    content:
+      'Ўзбек халқининг меҳмондоствилиги, олиғанлиги, ватанпарварлиги каби қадимий қадриятларини тарихий ҳужжатлар асосида тадқиқ қилиш.',
+    authorId: authors[0].id,
+    authorName: authors[0].name,
+    categoryId: '1',
+    categoryName: 'Маънавият',
+    categorySlug: 'ma-naviyat',
+    issueId: '1',
+    issueNumber: '01/2024',
+    date: '2024-01-15',
+    readTime: 8,
+    featured: true,
+    status: 'published',
+  },
+  {
+    id: '2',
+    slug: 'ilmiy-texnikaviy-taraqqiyot-yollari',
+    title: 'Илмий-техникавий тараққиёт йўллари',
+    summary: 'Ўзбекистоннинг илмий-техникавий тараққиёт стратегияси ва инновациялар ҳақида.',
+    content:
+      'Ўзбекистонда илмий-техникавий тараққиётни тезлаштириш, инновацион лойиҳаларни қўллаш масалалари кўрилган.',
+    authorId: authors[1].id,
+    authorName: authors[1].name,
+    categoryId: '2',
+    categoryName: 'Илм',
+    categorySlug: 'ilm',
+    issueId: '1',
+    issueNumber: '01/2024',
+    date: '2024-01-15',
+    readTime: 10,
+    featured: true,
+    status: 'published',
+  },
+  {
+    id: '4',
+    slug: 'iqtisodiyotda-innovatsiyalar-ahamiyati',
+    title: 'Иқтисодиётда инновациялар аҳамияти',
+    summary: 'Замонавий иқтисодиётда инновацияларнинг роли ва аҳамияти.',
+    content: 'Инновацияларнинг иқтисодий тараққиётдаги аҳамияти ва стартап лойиҳаларини қўллаш масалалари.',
+    authorId: authors[3].id,
+    authorName: authors[3].name,
+    categoryId: '3',
+    categoryName: 'Иқтисодиёт',
+    categorySlug: 'iqtisodiyot',
+    issueId: '2',
+    issueNumber: '02/2024',
+    date: '2024-02-15',
+    readTime: 7,
+    featured: false,
+    status: 'published',
+  },
+];
