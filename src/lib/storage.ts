@@ -5,7 +5,9 @@ import path from 'path';
 const getOs = () => eval("require('os')");
 const getSpawnSync = () => eval("require('child_process').spawnSync");
 
-const DATA_DIR = path.join(process.cwd(), 'public', 'data');
+const DATA_DIR = process.env.NODE_ENV === 'production'
+  ? path.join('/tmp', 'vatan-data')
+  : path.join(process.cwd(), 'public', 'data');
 
 // Use a global variable to persist cache across hot-reloads in Next.js development
 const globalForCache = globalThis as unknown as {
@@ -120,6 +122,24 @@ export function ensureDataDir() {
   if (!fs.existsSync(DATA_DIR)) {
     fs.mkdirSync(DATA_DIR, { recursive: true });
   }
+
+  // In production, copy seed data from public/data to /tmp if not already there
+  if (process.env.NODE_ENV === 'production') {
+    const seedDir = path.join(process.cwd(), 'public', 'data');
+    if (fs.existsSync(seedDir)) {
+      try {
+        const files = fs.readdirSync(seedDir);
+        for (const file of files) {
+          const dest = path.join(DATA_DIR, file);
+          if (!fs.existsSync(dest)) {
+            fs.copyFileSync(path.join(seedDir, file), dest);
+          }
+        }
+      } catch {
+        // Ignore seed copy errors
+      }
+    }
+  }
 }
 
 // Generic read function with cache and DB fallback
@@ -201,8 +221,8 @@ export function writeData<T>(filename: string, data: T): void {
     const filePath = path.join(DATA_DIR, filename);
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
   } catch (error) {
-    console.error(`Error writing ${filename} to filesystem:`, error);
-    throw error; // This is critical - if filesystem write fails, we have nowhere to store data
+    console.error(`Error writing ${filename} to filesystem (non-fatal):`, error);
+    // Do not throw - KV is the primary storage in production
   }
 }
 

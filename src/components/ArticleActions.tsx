@@ -1,12 +1,17 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function ArticleActions({ articleTitle, shortLink }: { articleTitle: string, shortLink?: string }) {
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
-  const [totalRatings, setTotalRatings] = useState(Math.floor(Math.random() * 50) + 10);
-  const [averageRating, setAverageRating] = useState((Math.random() * 2 + 3).toFixed(1));
+  const [totalRatings, setTotalRatings] = useState(12);
+  const [averageRating, setAverageRating] = useState('4.2');
+
+  useEffect(() => {
+    setTotalRatings(Math.floor(Math.random() * 50) + 10);
+    setAverageRating((Math.random() * 2 + 3).toFixed(1));
+  }, []);
   const [hasRated, setHasRated] = useState(false);
   const [copied, setCopied] = useState(false);
 

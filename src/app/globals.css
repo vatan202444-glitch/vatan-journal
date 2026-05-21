@@ -292,12 +292,13 @@ p, li {
 }
 
 .article-content a {
-  color: var(--primary);
-  text-decoration: underline;
+  color: inherit;
+  text-decoration: none;
 }
 
 .article-content a:hover {
   color: var(--primary-light);
+  text-decoration: underline;
 }
 
 /* Gold Accent Elements */

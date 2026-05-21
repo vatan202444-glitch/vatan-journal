@@ -1,21 +1,18 @@
 import type { Metadata } from "next";
-import { Lora, Roboto } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import MobileBottomNav from "@/components/MobileBottomNav";
 
-const serifFont = Lora({
-  variable: "--font-serif",
-  subsets: ["latin", "cyrillic", "cyrillic-ext"],
-  display: "swap",
-});
-
-const sansFont = Roboto({
+const sansFont = Inter({
   variable: "--font-sans",
-  subsets: ["latin", "cyrillic", "cyrillic-ext"],
-  weight: ["300", "400", "500", "700", "900"],
+  subsets: ["latin", "cyrillic"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
+
+const serifFont = sansFont; // Use same font for serif
 
 export const metadata: Metadata = {
   title: "VATAN - Маънавий-маърифий, илмий-оммабоп журнал",
@@ -52,8 +49,9 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col">
         <UserProvider>
           <Header initialCategories={headerCategories} quote={quote} />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 pb-16 md:pb-0">{children}</main>
           <Footer />
+          <MobileBottomNav />
         </UserProvider>
       </body>
     </html>
