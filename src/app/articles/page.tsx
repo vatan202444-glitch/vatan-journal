@@ -5,6 +5,9 @@ import { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import type { Article } from '@/lib/data';
 
+const stripHtml = (html: string) =>
+  html.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').trim();
+
 function ArticlesContent() {
   const searchParams = useSearchParams();
   const query = searchParams.get('q') || '';
@@ -112,7 +115,7 @@ function ArticlesContent() {
                   <h3 className="text-xl font-bold text-[#1e293b] mb-3 hover:text-[#1e3a8a] transition-colors">
                     <Link href={`/articles/${article.slug}`}>{article.title}</Link>
                   </h3>
-                  <p className="text-[#64748b] mb-4 line-clamp-3">{article.summary}</p>
+                  <p className="text-[#64748b] mb-4 line-clamp-3">{stripHtml(article.summary)}</p>
                   <div className="flex items-center justify-between text-sm text-[#94a3b8]">
                     <span className="font-medium text-[#475569]">{article.authorName}</span>
                     <span>{article.readTime} дақиқа ўқиш</span>

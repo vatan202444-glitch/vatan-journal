@@ -35,6 +35,7 @@ function enrichArticle(body: Partial<Article>, existing?: Article): Article {
     id: existing?.id || `article-${Date.now()}`,
     slug,
     title,
+    subtitle: body.subtitle || existing?.subtitle,
     summary,
     content: newContent,
     contentHtml: newContentHtml,

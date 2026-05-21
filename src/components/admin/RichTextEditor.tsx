@@ -100,8 +100,6 @@ export default function RichTextEditor({ value, onChange, placeholder }: RichTex
               'Arial, Helvetica, sans-serif',
               'Georgia, serif',
               'Times New Roman, Times, serif',
-              'Courier New, Courier, monospace',
-              'Verdana, Geneva, sans-serif',
             ],
           },
           image: {

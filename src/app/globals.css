@@ -14,9 +14,10 @@
   --card-bg: #ffffff;
   --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   
-  /* Typography - using CSS variables from next/font */
-  --font-serif: var(--font-playfair, 'Playfair Display'), Georgia, 'Times New Roman', serif;
+  /* Typography - Beautiful fonts for academic journal */
+  --font-serif: var(--font-playfair, 'Playfair Display'), 'Times New Roman', Georgia, serif;
   --font-sans: var(--font-inter, 'Inter'), system-ui, -apple-system, sans-serif;
+  --font-body: 'Georgia', 'Times New Roman', serif;
 }
 
 @theme inline {
@@ -231,12 +232,72 @@ p, li {
   font-weight: 450;
 }
 
+/* Ensure HTML content is rendered properly, not shown as raw text */
+.article-content p,
+.article-content div,
+.article-content span,
+.article-content strong,
+.article-content em,
+.article-content i,
+.article-content b {
+  font-family: var(--font-body);
+  color: var(--foreground);
+}
+
+.article-content p {
+  margin-bottom: 1.25rem;
+  text-align: justify;
+}
+
 .article-content h1,
 .article-content h2,
 .article-content h3 {
   font-family: var(--font-serif);
   margin-top: 2rem;
   margin-bottom: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.article-content h1 {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.article-content h2 {
+  font-size: 1.75rem;
+}
+
+.article-content h3 {
+  font-size: 1.5rem;
+}
+
+.article-content ul,
+.article-content ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.article-content li {
+  margin-bottom: 0.5rem;
+  font-family: var(--font-body);
+}
+
+.article-content blockquote {
+  border-left: 4px solid var(--accent-gold);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.article-content a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.article-content a:hover {
+  color: var(--primary-light);
 }
 
 /* Gold Accent Elements */

@@ -5,6 +5,7 @@ import AdminLayout from '@/components/admin/AdminLayout';
 import { adminFetch } from '@/lib/admin-api';
 import { issues as initialIssues, Issue } from '@/data/issues';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 
 const RichTextEditor = dynamic(() => import('@/components/admin/RichTextEditor'), { ssr: false });
 
@@ -280,14 +281,13 @@ export default function AdminArticles() {
             <h1 className="text-3xl font-bold text-[#1e293b] font-serif">Мақолалар</h1>
             <p className="text-[#64748b] mt-1">Барча мақолаларни бошқариш</p>
           </div>
-          <button
-            onClick={handleAddNew}
-            disabled={loading}
+          <Link
+            href="/admin/articles/new"
             className="px-6 py-3 bg-[#1e3a8a] text-white rounded-lg hover:bg-[#1e40af] transition-colors font-medium flex items-center gap-2 disabled:opacity-50"
           >
             <span>➕</span>
             Янги мақола
-          </button>
+          </Link>
         </div>
 
         {/* Filters */}
@@ -367,13 +367,13 @@ export default function AdminArticles() {
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex gap-2">
-                        <button
-                          onClick={() => handleEdit(article)}
+                        <Link
+                          href={`/admin/articles/${article.id}/edit`}
                           className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                           title="Таҳрирлаш"
                         >
                           ✏️
-                        </button>
+                        </Link>
                         <button
                           onClick={() => handleDelete(article.id)}
                           className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"

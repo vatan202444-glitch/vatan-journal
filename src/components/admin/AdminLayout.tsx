@@ -9,6 +9,7 @@ const menuItems = [
   { href: '/admin/homepage', label: 'Бош саҳифа', icon: '🏠' },
   { href: '/admin/quote', label: 'Иқтибос', icon: '💬' },
   { href: '/admin/articles', label: 'Мақолалар', icon: '📄' },
+  { href: '/admin/articles/new', label: 'Янги мақола', icon: '➕' },
   { href: '/admin/authors', label: 'Муаллифлар', icon: '✍️' },
   { href: '/admin/categories', label: 'Рукнлар', icon: '📁' },
   { href: '/admin/issues', label: 'Журнал сонлари', icon: '📚' },

@@ -4,6 +4,7 @@ export interface Article {
   id: string;
   slug: string;
   title: string;
+  subtitle?: string;
   summary: string;
   content: string;
   contentHtml?: string;

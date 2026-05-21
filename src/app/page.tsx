@@ -6,6 +6,9 @@ import type { Article, Issue, HomepageSettings } from '@/lib/data';
 import IssueCover from '@/components/ui/IssueCover';
 import Image from 'next/image';
 
+const stripHtml = (html: string) =>
+  html.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').trim();
+
 const NAV_CATEGORIES = [
   { name: 'Иқтисодиёт', slug: 'iqtisodiyot' },
   { name: 'Тарих', slug: 'tarix' },
@@ -212,7 +215,7 @@ export default function Home() {
               </div>
               
               <p className="text-lg text-[#475569] leading-loose mb-8 max-w-xl mx-auto lg:mx-0 font-medium">
-                {featuredArticle.summary}
+                {stripHtml(featuredArticle.summary)}
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -299,7 +302,7 @@ export default function Home() {
                     
                     {/* Excerpt */}
                     <p className="text-[#64748b] text-base leading-loose mb-6 flex-grow line-clamp-3 font-medium">
-                      {article.summary}
+                      {stripHtml(article.summary)}
                     </p>
                     
                     {/* Author & Action */}

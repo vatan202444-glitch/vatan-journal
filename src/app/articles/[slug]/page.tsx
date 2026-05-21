@@ -3,6 +3,9 @@ import { notFound } from 'next/navigation';
 import { getArticleBySlugOrId, getIssues, getArticles } from '@/lib/data';
 import type { Metadata } from 'next';
 
+const stripHtml = (html: string) =>
+  html.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').trim();
+
 export const revalidate = 60; // Revalidate at most every 60 seconds
 
 interface PageProps {
@@ -86,9 +89,14 @@ export default async function ArticlePage({ params }: PageProps) {
 
   const rawHtml =
     article.contentHtml ||
-    `<p class="lead">${article.summary}</p><div>${displayContent}</div>`;
+    `<div class="article-content">${displayContent}</div>`;
 
   const html = rawHtml
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
     .replace(/<script[\s\S]*?<\/script>/gi, '')
     .replace(/<iframe[\s\S]*?<\/iframe>/gi, '')
     .replace(/on\w+\s*=\s*["'][^"']*["']/gi, '')
@@ -155,7 +163,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
           {/* Title */}
           <h1
-            className="text-4xl md:text-5xl font-extrabold leading-tight mb-6"
+            className="text-4xl md:text-5xl font-extrabold leading-tight mb-4"
             style={{
               fontFamily: "'Playfair Display', Georgia, serif",
               color: '#1e293b',
@@ -166,13 +174,14 @@ export default async function ArticlePage({ params }: PageProps) {
             {article.title}
           </h1>
 
-          {/* Summary / Lead */}
-          <p
-            className="text-xl leading-relaxed mb-8"
-            style={{ color: '#475569', fontStyle: 'italic', borderLeft: '3px solid #b45309', paddingLeft: '1.25rem' }}
-          >
-            {article.summary}
-          </p>
+          {article.subtitle && (
+            <p
+              className="text-xl leading-relaxed mb-4"
+              style={{ color: '#475569', fontStyle: 'italic', borderLeft: '3px solid #b45309', paddingLeft: '1.25rem' }}
+            >
+              {article.subtitle}
+            </p>
+          )}
 
 
         </div>
@@ -202,7 +211,7 @@ export default async function ArticlePage({ params }: PageProps) {
           <div className="relative">
             <div
               id="article-content-body"
-              className={`article-reading-body transition-all duration-300 ${showPaywall ? 'max-h-[600px] overflow-hidden' : ''}`}
+              className={`article-content article-reading-body transition-all duration-300 ${showPaywall ? 'max-h-[600px] overflow-hidden' : ''}`}
               dangerouslySetInnerHTML={{ __html: html }}
             />
             
@@ -246,7 +255,6 @@ export default async function ArticlePage({ params }: PageProps) {
               {article.authorName.charAt(0)}
             </div>
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-wider text-[#94a3b8] mb-0.5">Тайёрлаган</p>
               <h3 className="text-[16px] font-bold text-[#1e293b]">{article.authorName}</h3>
             </div>
           </div>
